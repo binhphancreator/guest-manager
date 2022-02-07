@@ -1,0 +1,53 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile
+    image: guest_manager
+    container_name: guest-manager-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+      - ./storage/logs:/usr/local/var/log
+    networks:
+      - guest_manager_network
+    
+  nginx:
+    image: nginx:alpine
+    container_name: guest-manager-nginx
+    restart: unless-stopped
+    ports:
+      - 8083:80
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx:/etc/nginx/conf.d
+    networks:
+      - guest_manager_network
+  db:
+    image: mariadb
+    container_name: guest-manager-db
+    restart: unless-stopped
+    ports:
+      - 3309:3306
+    environment:
+      MYSQL_DATABASE: guest-manager
+      MYSQL_ROOT_PASSWORD: guest-manager
+      MYSQL_PASSWORD: guest-manager
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    working_dir: /var/www/
+    volumes:
+      - dbdata:/var/lib/mysql/
+      - ./:/var/www
+    networks:
+      - guest_manager_network
+
+networks:
+  guest_manager_network:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
