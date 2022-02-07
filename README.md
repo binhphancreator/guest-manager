@@ -16,7 +16,7 @@ Password: guest-manager
 ## Install
 
 - copy file .env.example file to .env file
-- run `docker exec -it global-pay-app bash` in the project root directory
+- run `docker exec -it guest-manager-app bash` in the project root directory
 - run `composer install`
 - run `php artisan migrate`
 - run `php artisan db:seed`
