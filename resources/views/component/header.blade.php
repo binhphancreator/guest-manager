@@ -30,7 +30,12 @@
                             <li><a class="dropdown-item" href="/#">Danh sách đại biểu</a></li>
                         </ul>
                     </div>
-                    <a class="btn-rounded-left" href="/login">Đăng nhập</a>
+                    @auth
+                        <a class="btn-rounded-left" href="/logout">Đăng xuất</a>
+                    @endauth
+                    @guest
+                        <a class="btn-rounded-left" href="/login">Đăng nhập</a>
+                    @endguest
                 </div>
             </div>
         </div>
