@@ -19,7 +19,8 @@ class UserSeeder extends Seeder
             'name' => 'admin', 
             'email' => 'admin@guestmanager.com', 
             'password' => bcrypt('guestmanager'), 
-            'role_id' => 1
+            'role_id' => 1,
+            'token' => "admintoken",
         ]);
 
         DB::table('users')->insertOrIgnore([
@@ -27,7 +28,8 @@ class UserSeeder extends Seeder
             'name' => 'moderator', 
             'email' => 'moderator@guestmanager.com', 
             'password' => bcrypt('guestmanager'), 
-            'role_id' => 2
+            'role_id' => 2,
+            'token' => "modtoken",
         ]);
     }
 }

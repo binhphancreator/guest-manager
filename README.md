@@ -22,3 +22,13 @@ Password: guest-manager
 - run `php artisan db:seed`
 - run `chown -R www-data:www-data storage`
 - run `composer dump-autoload`
+
+
+## API
+
+Checkin one
+`/checkin?action=checkin&guest_id=&token=modtoken`
+Checkout one
+`/checkin?action=checkout&guest_id=&token=modtoken`
+Checkin all
+`/checkin?action=checkinall&group_id=&token=admintoken`

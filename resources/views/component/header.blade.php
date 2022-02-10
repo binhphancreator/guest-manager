@@ -1,6 +1,6 @@
-<header class="py-2 position-relative mb-2">
+<header class="position-relative mb-3">
     <div class="overlay"></div>
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm p-0">
         <div class="container-lg">
             <a class="navbar-brand fs-4 d-block flex-grow-1" href="/">
                 <img src="/img/logo.png" alt="" srcset="">
@@ -17,8 +17,8 @@
                             Quản lý nhóm
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/#">Thêm nhóm</a></li>
-                            <li><a class="dropdown-item" href="/#">Danh sách nhóm</a></li>
+                            <li><a class="dropdown-item" href="/groups/create">Thêm nhóm</a></li>
+                            <li><a class="dropdown-item" href="/groups">Danh sách nhóm</a></li>
                         </ul>
                     </div>
                     <div class="nav-item dropdown">
@@ -26,8 +26,8 @@
                             Quản lý đại biểu
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/#">Thêm đại biểu</a></li>
-                            <li><a class="dropdown-item" href="/#">Danh sách đại biểu</a></li>
+                            <li><a class="dropdown-item" href="/guests/create">Thêm đại biểu</a></li>
+                            <li><a class="dropdown-item" href="/guests">Danh sách đại biểu</a></li>
                         </ul>
                     </div>
                     @auth
