@@ -30,6 +30,7 @@ a {
 /* width */
 ::-webkit-scrollbar {
   width: 5px;
+  height: 4px;
 }
 
 /* Track */
@@ -210,4 +211,8 @@ header.header-home {
 .nav-item.dropdown:hover .dropdown-menu {
   opacity: 1;
   visibility: visible;
+}
+
+table * {
+    white-space: nowrap;
 }

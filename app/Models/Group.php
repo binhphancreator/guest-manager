@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Guest;
 
 class Group extends Model
 {
@@ -16,6 +17,6 @@ class Group extends Model
 
     public function guests()
     {
-        return $this->hasMany('App\Models\Guest');
+        return $this->hasMany(Guest::class);
     }
 }
