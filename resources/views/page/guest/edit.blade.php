@@ -112,7 +112,7 @@
       </div>
 
       <div class="col-12">
-        <button type="submit" class="btn btn-primary">Tạo</button>
+        <button type="submit" class="btn btn-primary">Cập nhật</button>
       </div>
     </form>
   </div>

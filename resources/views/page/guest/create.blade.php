@@ -49,7 +49,7 @@
         <select name="group_id" class="form-select">
           <option value=""></option>
           @foreach($groups as $group)
-          <option value="{{$group->group_id}}">{{$group->group_name}}</option>
+          <option value="{{$group->id}}">{{$group->group_name}}</option>
           @endforeach
         </select>
         @if ($errors->first('group_id'))
