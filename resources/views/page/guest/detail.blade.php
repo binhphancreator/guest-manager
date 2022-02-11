@@ -100,13 +100,63 @@
   }
 
   @media only screen and (max-width: 600px) {
-
     .line__1,
     .line__2 {
       visibility: hidden;
     }
 
-    .gd__top {}
+    .gd__top {
+      flex-direction: column;
+    }
+
+    .img__top {
+      height: 10vh;
+      margin: auto;
+    }
+    .img__top>img{
+      width: 10vh;
+      object-fit: contain;
+      height: auto;
+      margin: 15px 0;
+    }
+
+    .title__top {
+      font-size: 18px;
+      padding: 35px 5vw;
+    }
+
+    .gd__body {
+      padding: 10px 10px 15vh;
+      width: 100vw;
+      margin: 0;
+    }
+
+    .title__body {
+      font-size: 25px;
+      text-align: center;
+    }
+
+    .img__body {
+      margin: 0;
+      justify-content: center;
+    }
+
+    .img__body >img{
+      height: 20vh;
+      object-fit: contain;
+      margin: 10px 0 30px;
+    }
+
+    .guest__info {
+      
+    color: white;
+    font-size: 16px;
+    line-height: 1.5;
+    }
+
+    .gd__bottom {}
+
+    .gd__bottom {}
 
   }
 </style>
@@ -125,12 +175,12 @@
       NHIỆT LIỆT CHÀO MỪNG ĐẠI BIỂU
     </div>
     <div class="content__body row w-100 pt-4">
-      <div class="col-4">
+      <div class="col-12 col-md-4">
         <div class="img__body">
           <img src="{{$guest->image}}" alt="">
         </div>
       </div>
-      <div class="guest__info col-8">
+      <div class="guest__info col-12 col-md-8">
         <div class="row">
           <div class="col-12">Đồng chí <span class="text-uppercase ms-5 ">{{$guest->fullname}}</span></div>
 
