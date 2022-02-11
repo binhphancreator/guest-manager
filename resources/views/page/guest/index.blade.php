@@ -130,7 +130,7 @@
                     <td>${guest.guest_id}</td>
                     <td>${guest.fullname}</td>
                     <td>
-                        ${guest.checking_status ? '<span style="color:red">CHƯA ĐIỂM DANH</span>' : '<span style="color:green">ĐÃ ĐIỂM DANH</span>'}
+                        ${!guest.checking_status ? '<span style="color:red">CHƯA ĐIỂM DANH</span>' : '<span style="color:green">ĐÃ ĐIỂM DANH</span>'}
                     </td>
                     <td class='d-flex justify-content-end'>
                         <a href="/guests/${guest.id}/edit" class="btn btn-primary">Sửa</a>
