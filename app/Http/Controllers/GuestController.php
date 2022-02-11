@@ -48,24 +48,16 @@ class GuestController extends Controller
         $search = $request->input('search') ?? '';
         $checkin = $request->input('checkin') ? true : false;
         if(preg_match('/^[0-9]{2}$/', $search)) {
-            $groups = Group::where('group_id', $search)
-            ->whereHas('guests', function(Builder $builder) use ($checkin) {
-                $builder->where('checking_status', $checkin);   
-            })
-            ->with('guests')->paginate(10);
+            $guests = Guest::whereHas('group', function(Builder $builder) use ($search) {
+                $builder->where('group_id', $search);
+            })->where('checking_status', $checkin)->with('group')->paginate(10);
         } elseif(preg_match('/^[0-9]{4}$/', $search)) {
-            $groups = Group::whereHas('guests', function(Builder $builder) use ($search, $checkin) {
-                $builder->where('guest_id', $search)->where('checking_status', $checkin);
-            })->with('guests')->paginate(10);
+            $guests = Guest::where('guest_id', $search)->where('checking_status', $checkin)->with('group')->paginate(10);
         } else {
-            $groups = Group::orderBy('group_id')
-                ->whereHas('guests', function(Builder $builder) use ($search, $checkin) {
-                    $builder->where('fullname', 'like', "%$search%")->where('checking_status', $checkin);    
-                })
-                ->with('guests')->paginate(10);
+            $guests = Guest::where('fullname','like', "%$search%")->where('checking_status', $checkin)->with('group')->paginate(10);
         }
 
-        return view('page.guest.index', ['groups' => $groups, 'checkin' => $checkin, 'search' => $search]);
+        return view('page.guest.index', ['guests' => $guests, 'checkin' => $checkin, 'search' => $search]);
     }
 
     /**
