@@ -9,24 +9,35 @@
             </a>
         </div>
         <div class="p-4 border-top shadow-sm rounded-3">
-            <div class="my-3 w-100 mb-4">
-                <h4 class="d-flex justify-content-center">Danh sách đại biểu</h4>
-            </div>
             <div class='row mb-5'>
-                <form class="row align-items-center g-3" action="{{ route('guests.index') }}" method="GET" class='col-4'>
-                    <div class="col-auto">
-                        <input value="{{$search}}" name='search' type="text" class="form-control">
-                    </div>
-                    <div class="form-check col-auto">
-                        <input class="form-check-input" type="checkbox" name="checkin" id="checkinStatus" {{$checkin ? 'checked' : ''}}>
-                        <label class="form-check-label" for="checkinStatus">
-                          Trạng thái checkin
-                        </label>
-                    </div>
-                    <div class="col-auto">
-                        <button class="btn btn-secondary" type="submit">Search</button>
+                <form action="{{ route('guests.index') }}" method="GET">
+                    <div class="p-3 py-4">
+                        <div class="mb-4">
+                            <h3 class="text-center">Tìm kiếm nhóm, đại biểu</h3>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-12 mb-4">
+                                <label for="searchInput" class="form-label">Từ khóa</label>
+                                <input type="text" placeholder="Nhập id group, id guest hoặc fullname" class="form-control"
+                                    id="searchInput" value="{{$search}}" name="search">
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check col-auto">
+                                    <input class="form-check-input" type="checkbox" name="checkin" id="checkinStatus" {{$checkin ? 'checked' : ''}}>
+                                    <label class="form-check-label" for="checkinStatus">
+                                      Trạng thái checkin
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn-rounded-left p-2">Tìm kiếm</button>
+                        </div>
                     </div>
                 </form>
+            </div>
+            <div class="my-3 w-100 mb-4">
+                <h4 class="d-flex justify-content-center">Danh sách đại biểu</h4>
             </div>
             @foreach ($groups as $group)
                 <div class="mb-4 overflow-auto">
