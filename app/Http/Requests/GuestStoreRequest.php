@@ -30,7 +30,7 @@ class GuestStoreRequest extends FormRequest
                 Rule::unique('guests')->ignore($this->guest),
                 'digits:4'
             ],
-            "fullname" => "required",
+            "fullname" => "required|regex:/[^0-9]+/",
             'group_id' => 'required',
             'title1' => 'required',
         ];

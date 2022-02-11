@@ -7,7 +7,7 @@
     position: relative;
     width: 100vw;
     height: 100vh;
-    background-color: blue;
+    background-color: #151AA6;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -44,6 +44,7 @@
     background-color: orange;
     z-index: 100;
   }
+
   .line__2 {
     position: absolute;
     top: calc(20vh + 15px);
@@ -69,11 +70,21 @@
     font-weight: 900;
     color: red;
   }
-  
+
+  .img__body {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 30px;
+  }
+
+  .img__body>img {
+    width: 200px;
+  }
+
   .guest__info {
     color: white;
     font-size: 25px;
-    line-height: 1.7;
+    line-height: 1.8;
   }
 
   .gd__bottom {
@@ -88,6 +99,16 @@
     object-fit: cover;
   }
 
+  @media only screen and (max-width: 600px) {
+
+    .line__1,
+    .line__2 {
+      visibility: hidden;
+    }
+
+    .gd__top {}
+
+  }
 </style>
 
 <div class="guest__detail">
@@ -104,21 +125,23 @@
       NHIỆT LIỆT CHÀO MỪNG ĐẠI BIỂU
     </div>
     <div class="content__body row w-100 pt-4">
-      <div class="img__body col-4">
-        <img src="/img/logo.png" alt="">
+      <div class="col-4">
+        <div class="img__body">
+          <img src="{{$guest->image}}" alt="">
+        </div>
       </div>
       <div class="guest__info col-8">
         <div class="row">
-          <div class="col-12">Đồng chí <span class="text-uppercase">{{$guest->fullname}}</span></div>
+          <div class="col-12">Đồng chí <span class="text-uppercase ms-5 ">{{$guest->fullname}}</span></div>
 
         </div>
         <div class="row">
-          <div class="col-12">Đơn vị {{$guest->group->group_name}}</div>
+          <div class="col-12">Đơn vị <span class="ms-4">{{$guest->group->group_name}}</span></div>
 
         </div>
         <div class="row">
-          <div class="col-2">Chức vụ</div>
-          <div class="col-10">
+          <div class="col-3">Chức vụ</div>
+          <div class="col-9">
             <div class="row">{{$guest->title1}}</div>
             <div class="row">{{$guest->title2}}</div>
           </div>
@@ -132,7 +155,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-12">Trang thái 
+          <div class="col-12">Trang thái
             @if($guest->checking_status == 1)
             <span style="color:greenyellow">ĐÃ ĐIỂM DANH</span>
             @else

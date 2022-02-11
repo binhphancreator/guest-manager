@@ -41,9 +41,15 @@ class GuestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $guests = $this->guest->paginate(10);
+        $search = $request->input('search');
+        if (!$search) {
+            $guests = $this->guest->paginate(10);
+        }
+
+        // if
+
         return view('page.guest.index', compact('guests'));
     }
 
@@ -163,7 +169,7 @@ class GuestController extends Controller
             if ($this->user->where('token', $token)->doesntExist()) return response('error', 404);
 
             $guest = $this->guest->where('guest_id', $guest_id)->update(['checking_status' => true]);
-            if(!$guest) return response('error', 404);
+            if (!$guest) return response('error', 404);
 
             return response('success', 200);
         }
@@ -172,7 +178,7 @@ class GuestController extends Controller
             if ($this->user->where('token', $token)->doesntExist()) return response('error', 404);
 
             $guest = $this->guest->where('guest_id', $guest_id)->update(['checking_status' => false]);
-            if(!$guest) return response('error', 404);
+            if (!$guest) return response('error', 404);
 
             return response('success', 200);
         }
@@ -185,7 +191,7 @@ class GuestController extends Controller
 
             $guest = $this->guest->where('group_id', $group_id)->update(['checking_status' => true]);
             // return $guest;
-            if(!$guest) return response('error', 404);
+            if (!$guest) return response('error', 404);
 
             return response('success', 200);
         }

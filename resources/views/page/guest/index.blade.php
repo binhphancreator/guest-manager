@@ -12,6 +12,14 @@
     <div class="my-3 w-100 mb-4">
       <h4 class="d-flex justify-content-center">Danh sách đại biểu</h4>
     </div>
+    <div class='row'>
+      <form action="{{route('guests.index')}}" method="GET" class='col-4'>
+        <div class=" input-group mb-3">
+          <input name='search' type="text" class="form-control">
+          <button class="btn btn-secondary" type="submit">Search</button>
+        </div>
+      </form>
+    </div>
     <table class="table  table-hover">
       <thead>
         <tr>
@@ -39,7 +47,7 @@
           </td>
           <td class='d-flex justify-content-end'>
             <a href="{{route('guests.edit',$guest->id)}}" class="btn btn-primary">Sửa</a>
-            
+
             @if(auth()->user()->role_id === 1)
             <form action="{{route('guests.destroy',[$guest->id])}}" method="POST">
               @method('DELETE')
