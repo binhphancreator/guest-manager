@@ -15,6 +15,11 @@
       {{ session('error') }}
     </div>
     @endif
+    @if ($errors->all())
+    <div class="alert alert-danger" role="alert">
+      Tạo không thành công
+    </div>
+    @endif
     @if (session('success'))
     <div class="alert alert-success" role="alert">
       {{ session('success') }}
@@ -23,15 +28,15 @@
     <form action="{{ route('groups.store') }}" method="POST">
       @csrf
       <div class="mb-3">
-        <label class="form-label" for="exampleInputEmail1">Id nhóm</label>
-        <input name="group_id" type="text" class="form-control" id="exampleInputEmail1">
+        <label class="form-label">Id nhóm</label>
+        <input name="group_id" type="text" class="form-control" value="{{old('group_id')}}">
         @if ($errors->first('group_id'))
         <div><small class="text-danger">{{ $errors->first('group_id') }}</small></div>
         @endif
       </div>
       <div class="mb-3">
-        <label class="form-label" for="exampleInputPassword1">Tên Nhóm</label>
-        <input name="group_name" type="text" class="form-control" id="exampleInputPassword1">
+        <label class="form-label">Tên Nhóm</label>
+        <input name="group_name" type="text" class="form-control" value="{{old('group_name')}}">
         @if ($errors->first('group_name'))
         <div><small class="text-danger">{{ $errors->first('group_name') }}</small></div>
         @endif

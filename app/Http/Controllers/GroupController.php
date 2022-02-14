@@ -97,7 +97,11 @@ class GroupController extends Controller
         $user = Auth::user();
         if ($user->role_id !== 1) return redirect()->route('index');
 
-        $this->group->find($id)->delete();
-        return redirect()->route('groups.index');
+        $group = $this->group->find($id);
+        if (count($group->guests) === 0) {
+            $group->delete();
+            return redirect()->route('groups.index')->with('success', "Xoá thành công");
+        }
+        return redirect()->route('groups.index')->with('error', "Xoá không thành công, nhóm vẫn còn đại biểu");
     }
 }
