@@ -1,30 +1,25 @@
 @extends('layout.default')
 
 @section('body')
-@include('component.header')
-<section class="main-content container-lg mb-5">
-    <div class="mb-3">
-        <a href="/guests/create">
-            Thêm đại biểu
-        </a>
-    </div>
-    <div class="p-4 border-top shadow-sm rounded-3">
-        <div class='row mb-5'>
-            <form action="{{ route('guests.index') }}" method="GET">
-                <div class="p-3 py-4">
-                    <div class="mb-4">
-                        <h3 class="text-center">Tìm kiếm nhóm, đại biểu</h3>
-                    </div>
-                    <div class="row mb-4">
-                        <div class="col-12 mb-4">
-                            <label for="searchInput" class="form-label">Từ khóa</label>
-                            <input type="text" placeholder="Nhập id group, id guest hoặc fullname" class="form-control" id="searchInput" value="{{$search}}" name="search">
+    @include('component.header')
+    <section class="main-content container-lg mb-5">
+        <div class="mb-3">
+            <a href="/guests/create">
+                Thêm đại biểu
+            </a>
+        </div>
+        <div class="p-4 border-top shadow-sm rounded-3">
+            <div class='row mb-5'>
+                <form action="{{ route('guests.index') }}" method="GET">
+                    <div class="p-3 py-4">
+                        <div class="mb-4">
+                            <h3 class="text-center">Tìm kiếm nhóm, đại biểu</h3>
                         </div>
                         <div class="row mb-4">
                             <div class="col-12 mb-4">
                                 <label for="searchInput" class="form-label">Từ khóa</label>
-                                <input type="text" placeholder="Nhập id group, id guest hoặc fullname" class="form-control"
-                                    id="searchInput" value="{{ $search }}" name="search">
+                                <input type="text" placeholder="Nhập id group, id guest hoặc fullname"
+                                    class="form-control" id="searchInput" value="{{ $search }}" name="search">
                             </div>
                             <div class="col-12">
                                 <div class="form-check col-auto">
@@ -36,36 +31,34 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn-rounded-left p-2">Tìm kiếm</button>
+                        </div>
                     </div>
-                    <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn-rounded-left p-2">Tìm kiếm</button>
+                </form>
+            </div>
+            <div class="my-3 w-100 mb-4">
+                <h4 class="d-flex justify-content-center">Danh sách đại biểu</h4>
+            </div>
+            <div class="mb-4 overflow-auto">
+                @if (session('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('error') }}
                     </div>
+                @endif
+                @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                <div id="tableGroupList">
+
                 </div>
-            </form>
-        </div>
-        <div class="my-3 w-100 mb-4">
-            <h4 class="d-flex justify-content-center">Danh sách đại biểu</h4>
-        </div>
-        @foreach ($groups as $group)
-        <div class="mb-4 overflow-auto">
-            <h5 class="mb-2">Nhóm {{$group->group_name}}</h5>
-            @if (session('error'))
-            <div class="alert alert-danger" role="alert">
-                {{ session('error') }}
-            </div>
-            @endif
-            @if (session('success'))
-            <div class="alert alert-success" role="alert">
-                {{ session('success') }}
-            </div>
-            <div id="tableGroupList">
 
+                <div class='d-flex justify-content-end'>
+                    {{ $guests->links('pagination::bootstrap-4') }}
+                </div>
             </div>
-
-            <div class='d-flex justify-content-end'>
-                {{ $guests->links('pagination::bootstrap-4') }}
-            </div>
-        </div>
     </section>
 @endsection
 
@@ -120,7 +113,8 @@
                 </tr>
             `);
 
-            $(`#tableGroupList [group-id="${guest.group.id}"] h5`).text(`Tổng ${groups[guest.group.id].count} đại biểu`);
+            $(`#tableGroupList [group-id="${guest.group.id}"] h5`).text(
+                `Tổng ${groups[guest.group.id].count} đại biểu`);
         });
     </script>
 @endsection
