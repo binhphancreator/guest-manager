@@ -28,7 +28,7 @@ class GuestController extends Controller
     public function detail(Request $request)
     {
         $id = $request->input('id');
-        $guest_id = $request->input('guest');
+        $guest_id = $request->input('guest_id');
         if (($id !== null && $guest_id !== null) || ($id === null && $guest_id === null)) return redirect()->route('index');
 
         if ($id) $guest = $this->guest->where('id', $id)->first();
@@ -160,7 +160,7 @@ class GuestController extends Controller
         if ($user->role_id !== 1) return redirect()->route('index');
 
         $this->guest->find($id)->delete();
-        return redirect()->route('guests.index');
+        return redirect()->route('guests.index')->with('success', "Xoá thành công");
     }
 
     public function checkin(Request $request)

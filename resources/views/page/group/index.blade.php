@@ -12,6 +12,16 @@
     <div class="my-3 w-100 mb-4">
       <h4 class="d-flex justify-content-center">Danh sách nhóm</h4>
     </div>
+    @if (session('error'))
+    <div class="alert alert-danger" role="alert">
+      {{ session('error') }}
+    </div>
+    @endif
+    @if (session('success'))
+    <div class="alert alert-success" role="alert">
+      {{ session('success') }}
+    </div>
+    @endif
     <table class="table  table-hover">
       <thead>
         <tr>
@@ -29,13 +39,32 @@
           <td>{{$group->group_name}}</td>
           <td class='d-flex justify-content-end'>
             <a href="{{route('groups.edit',$group->id)}}" class="btn btn-primary">Sửa</a>
-            
+
             @if(auth()->user()->role_id === 1)
-            <form action="{{route('groups.destroy',[$group->id])}}" method="POST">
-              @method('DELETE')
-              @csrf
-              <button type="submit" class="btn btn-danger ms-3">Xóa</button>
-            </form>
+            <button type="button" class="btn btn-danger  ms-3" data-bs-toggle="modal" data-bs-target="#model{{$group->id}}">
+              Xóa
+            </button>
+            <div class="modal fade" id="model{{$group->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Xóa nhóm</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Bạn chắc chắn muốn xóa nhóm:  {{$group->name}}
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <form action="{{route('groups.destroy',[$group->id])}}" method="POST">
+                      @method('DELETE')
+                      @csrf
+                      <button type="submit" class="btn btn-danger  ms-3">Xóa</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
             @endif
           </td>
         </tr>
