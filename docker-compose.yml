@@ -23,6 +23,7 @@ services:
     volumes:
       - ./:/var/www
       - ./docker/nginx:/etc/nginx/conf.d
+      - ./storage/logs/nginx:/var/log/nginx
     networks:
       - guest_manager_network
   db:
