@@ -10,7 +10,21 @@
     background-color: #151AA6;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    z-index: -2;
+  }
+
+  .bg__img {
+    background-image: url("/img/trong-dong.png");
+    opacity: 0.25;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
   }
 
   .gd__top {
@@ -24,14 +38,17 @@
   }
 
   .title__top {
-    padding: 0 10vw 0 5vw;
+    padding-right: 10vw;
+    margin: auto;
     color: white;
-    font-size: 30px;
+    font-size: 2vw;
     font-weight: 900;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    text-shadow: 1px 1px 2px #ffffff;
   }
 
   .line__1 {
@@ -41,8 +58,19 @@
     display: block;
     width: 80vw;
     height: 15px;
-    background-color: orange;
+    background-image: linear-gradient(to right, #ed9b28, #eabd4e);
     z-index: 100;
+  }
+
+  .line__1::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: -20px;
+    width: 0;
+    height: 0;
+    border-bottom: 15px solid #c55a11;
+    border-left: 20px solid transparent;
   }
 
   .line__2 {
@@ -50,10 +78,21 @@
     top: calc(20vh + 15px);
     left: 0;
     display: block;
-    width: calc(20vw + 15px);
+    width: calc(20vw - 20px);
     height: 15px;
-    background-color: greenyellow;
+    background-image: linear-gradient(to right, #61944a, #addd98);
     z-index: 100;
+  }
+
+  .line__2::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: -20px;
+    width: 0;
+    height: 0;
+    border-top: 15px solid #468c27;
+    border-right: 20px solid transparent;
   }
 
   .gd__body {
@@ -61,14 +100,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 5vh auto 30vh;
-    width: 80vw;
+    margin: 8vh auto;
+    width: 90vw;
   }
 
   .title__body {
-    font-size: 45px;
+    font-size: 3vw;
     font-weight: 900;
     color: red;
+    text-shadow: 2px 2px 4px #FF0000;
   }
 
   .img__body {
@@ -78,13 +118,15 @@
   }
 
   .img__body>img {
-    width: 200px;
+    width: 14vw;
   }
 
   .guest__info {
     color: white;
-    font-size: 25px;
+    font-size: 1.8vw;
+    font-weight: 500;
     line-height: 1.8;
+    text-shadow: 1px 1px 2px #ffffff;
   }
 
   .gd__bottom {
@@ -100,8 +142,10 @@
   }
 
   @media only screen and (max-width: 600px) {
+
     .line__1,
-    .line__2 {
+    .line__2,
+    .gd__bottom {
       visibility: hidden;
     }
 
@@ -113,27 +157,31 @@
       height: 10vh;
       margin: auto;
     }
-    .img__top>img{
-      width: 10vh;
+
+    .img__top>img {
+      width: 8vh;
       object-fit: contain;
       height: auto;
-      margin: 15px 0;
+      margin: 8px 0;
     }
 
     .title__top {
-      font-size: 18px;
-      padding: 35px 5vw;
+      font-size: 3.3vw;
+      padding: 10px 5vw;
+      text-shadow: 0.5px 0.5px 1px #ffffff;
     }
 
     .gd__body {
-      padding: 10px 10px 15vh;
+      padding: 3vh 10px;
       width: 100vw;
       margin: 0;
     }
 
     .title__body {
-      font-size: 25px;
+      font-size: 5.5vw;
       text-align: center;
+
+      text-shadow: 1px 1px 2px #FF0000;
     }
 
     .img__body {
@@ -141,32 +189,35 @@
       justify-content: center;
     }
 
-    .img__body >img{
-      height: 20vh;
+    .img__body>img {
+      height: 28vh;
+      width: 50vw;
       object-fit: contain;
-      margin: 10px 0 30px;
+      margin: 0px 0 30px;
     }
 
     .guest__info {
-      
-    color: white;
-    font-size: 16px;
-    line-height: 1.5;
+      color: white;
+      font-size: 4vw;
+      line-height: 1.5;
+      text-shadow: 0.5px 0.5px 1px #ffffff;
     }
 
-    .gd__bottom {}
-
-    .gd__bottom {}
 
   }
 </style>
 
 <div class="guest__detail">
+  <div class="bg__img">
+  </div>
   <div class="gd__top">
     <div class="img__top">
       <img src="/img/logo.png" alt="">
     </div>
-    <div class="title__top">ĐẠI HỘI ĐẠI BIỂU ĐOÀN TNCS HỒ CHÍ MINH XÃ ĐA TỐN LẦN THỨ XXV, NHIỆM KỲ 2022-2027</div>
+    <div class="title__top">
+      <div>ĐẠI HỘI ĐẠI BIỂU ĐOÀN TNCS HỒ CHÍ MINH XÃ ĐA TỐN </div>
+      <div>LẦN THỨ XXV, NHIỆM KỲ 2022-2027</div>
+    </div>
   </div>
   <div class="line__1"></div>
   <div class="line__2"></div>
@@ -182,11 +233,11 @@
       </div>
       <div class="guest__info col-12 col-md-8">
         <div class="row">
-          <div class="col-12">Đồng chí <span class="text-uppercase ms-5 ">{{$guest->fullname}}</span></div>
+          <div class="col-12">Đồng chí <span class="text-uppercase ms-3 ">{{$guest->fullname}}</span></div>
 
         </div>
         <div class="row">
-          <div class="col-12">Đơn vị <span class="ms-4">{{$guest->group->group_name}}</span></div>
+          <div class="col-12">Đơn vị <span class="ms-3">{{$guest->group->group_name}}</span></div>
 
         </div>
         <div class="row">
@@ -197,19 +248,19 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-6">
+          <div class="col-12 col-md-6">
             Chỗ ngồi phiên 1: {{$guest->seat1}}
           </div>
-          <div class="col-6">
-            Chỗ ngồi phiên 1: {{$guest->seat2}}
+          <div class="col-12 col-md-6">
+            Chỗ ngồi phiên 2: {{$guest->seat2}}
           </div>
         </div>
         <div class="row">
           <div class="col-12">Trang thái
             @if($guest->checking_status == 1)
-            <span style="color:greenyellow">ĐÃ ĐIỂM DANH</span>
+            <span style="color:greenyellow; text-shadow: 1px 1px 2px #0f0;">ĐÃ ĐIỂM DANH</span>
             @else
-            <span style="color:red">CHƯA ĐIỂM DANH</span>
+            <span style="color:red; text-shadow: 1px 1px 2px #f00;">CHƯA ĐIỂM DANH</span>
             @endif
           </div>
         </div>
