@@ -5,8 +5,7 @@
             <a class="navbar-brand fs-4 d-block flex-grow-1" href="{{route('index')}}">
                 <img src="/img/logo.png" alt="" srcset="">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse flex-grow-0" id="navbarNavAltMarkup">
@@ -31,10 +30,11 @@
                         </ul>
                     </div>
                     @auth
-                        <a class="btn-rounded-left" href="{{route('logout')}}">Đăng xuất</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('profile.index')}}">Tài khoản</a>
+                    <a class="btn-rounded-left" href="{{route('logout')}}">Đăng xuất</a>
                     @endauth
                     @guest
-                        <a class="btn-rounded-left" href="{{route('login')}}">Đăng nhập</a>
+                    <a class="btn-rounded-left" href="{{route('login')}}">Đăng nhập</a>
                     @endguest
                 </div>
             </div>

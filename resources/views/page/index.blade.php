@@ -13,14 +13,14 @@
                     <label for="searchInput" class="form-label">Từ khóa</label>
                     <input type="text" placeholder="Nhập id group, id guest hoặc fullname" class="form-control" id="searchInput" name="search">
                 </div>
-                <div class="col-6 mb-4">
+                <div class="col-12 mb-4">
                     <select id="groupSelect" name="search_group[]">
                         @foreach($groups as $group)
                         <option>{{$group->group_name}}</option>
                         @endforeach
                     </select>
                 </div>
-                <div class="col-6">
+                <div class="col-12">
                     <div class="form-check col-auto">
                         <input class="form-check-input" type="checkbox" name="checkin" id="checkinStatus">
                         <label class="form-check-label" for="checkinStatus">

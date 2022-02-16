@@ -22,6 +22,8 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/login', [AuthController::class, 'showLoginForm'])->middleware('guest')->name('login');
 Route::post('/login', [AuthController::class, 'login'])->middleware('guest')->name('post.login');
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
+Route::get('/profile', [HomeController::class, 'getProfile'])->middleware('auth')->name('profile.index');
+Route::post('/profile', [HomeController::class, 'updateProfile'])->middleware('auth')->name('profile.update');
 
 Route::resource('groups', GroupController::class)->middleware('auth');
 Route::resource('guests', GuestController::class)->middleware('auth');
