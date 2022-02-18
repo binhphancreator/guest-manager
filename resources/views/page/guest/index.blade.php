@@ -61,6 +61,7 @@
 @section('js')
 <script defer>
     const groups = {};
+    const prefix = "{{config('app.prefix_web')}}";
     var guests = <?php echo json_encode($guests); ?>;
     guests.data.forEach(guest => {
         if (!(guest.group && guest.group.id)) return
@@ -69,7 +70,7 @@
             groups[guest.group.id].count = 0;
             $('#tableGroupList').append(`
                 <div group-id=${guest.group.id} class="mb-4 overflow-auto">
-                    <h4 class="mb-2">Nhóm: ${guest.group.group_name}</h4>
+                    <h4 class="mb-2">${guest.group.group_name}</h4>
                     <table class="table  table-hover">
                         <thead>
                             <tr>
@@ -91,13 +92,13 @@
         $(`#tableGroupList [group-id="${guest.group.id}"] table tbody`).append(`
                 <tr>
                     <th scope="row">${groups[guest.group.id].count}</th>
-                    <td><a href="/guest?guest_id=${guest.guest_id}" target="_blank">${guest.guest_id}</a></td>
-                    <td><a href="/guest?guest_id=${guest.guest_id}" target="_blank">${guest.fullname}</a></td>
+                    <td><a href="/${prefix}/guest?guest_id=${guest.guest_id}" target="_blank">${guest.guest_id}</a></td>
+                    <td><a href="/${prefix}/guest?guest_id=${guest.guest_id}" target="_blank">${guest.fullname}</a></td>
                     <td>
                         ${!guest.checking_status ? '<span style="color:red">CHƯA ĐIỂM DANH</span>' : '<span style="color:green">ĐÃ ĐIỂM DANH</span>'}
                     </td>
                     <td class='d-flex justify-content-end'>
-                        <a href="/guests/${guest.id}/edit" class="btn btn-primary">Sửa</a>
+                        <a href="/${prefix}/guests/${guest.id}/edit" class="btn btn-primary">Sửa</a>
                         @if (auth()->user()->role_id === 1)
                         <button type="button" class="btn btn-danger  ms-3" data-bs-toggle="modal" data-bs-target="#model${guest.id}">
                         Xóa
@@ -114,7 +115,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <form action="/guests/${guest.id}" method="POST">
+                                    <form action="/${prefix}/guests/${guest.id}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="btn btn-danger ms-3">Xóa</button>
