@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $("#groupSelect").CreateMultiCheckBox({
         width: "250px",
-        defaultText: "Chọn nhóm",
+        defaultText: "Chọn đơn vị",
         height: "250px",
     });
 });

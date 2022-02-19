@@ -5,12 +5,12 @@
 <section class="main-content container-lg mb-5">
   <div class="mb-3">
     <a href="/groups/create">
-      Thêm nhóm
+      Thêm đơn vị
     </a>
   </div>
   <div class="p-4 border-top shadow-sm rounded-3">
     <div class="my-3 w-100 mb-4">
-      <h4 class="d-flex justify-content-center">Danh sách nhóm</h4>
+      <h4 class="d-flex justify-content-center">DANH SÁCH ĐƠN VỊ</h4>
     </div>
     @if (session('error'))
     <div class="alert alert-danger" role="alert">
@@ -26,17 +26,17 @@
       <thead>
         <tr>
           <th style="width: 5%" scope="col"></th>
-          <th style="width: 40%" scope="col">ID nhóm</th>
-          <th style="width: 30%" scope="col">Tên nhóm</th>
+          <th style="width: 40%" scope="col">Mã đơn vị</th>
+          <th style="width: 30%" scope="col">Tên đơn vị</th>
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
         @foreach ($groups as $group)
         <tr>
-          <th scope="row">{{$loop->index + 1 }}</th>
-          <td>{{$group->group_id}}</td>
-          <td>{{$group->group_name}}</td>
+          <th style="vertical-align: middle;" scope="row">{{$loop->index + 1 }}</th>
+          <td style="vertical-align: middle;">{{$group->group_id}}</td>
+          <td style="vertical-align: middle;">{{$group->group_name}}</td>
           <td class='d-flex justify-content-end'>
             <a href="{{route('groups.edit',$group->id)}}" class="btn btn-primary">Sửa</a>
 
@@ -48,14 +48,14 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title">Xóa nhóm</h5>
+                    <h5 class="modal-title">Xóa đơn vị</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    Bạn chắc chắn muốn xóa nhóm:  {{$group->name}}
+                    Bạn chắc chắn muốn xóa đơn vị: {{$group->name}}
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
                     <form action="{{route('groups.destroy',[$group->id])}}" method="POST">
                       @method('DELETE')
                       @csrf
