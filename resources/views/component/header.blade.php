@@ -5,7 +5,7 @@
             <a class="navbar-brand fs-4 d-block " href="{{route('index')}}">
                 <img src="/img/logo.png" alt="" srcset="">
             </a>
-            <div class="flex-grow-1 fw-bold">
+            <div class="flex-grow-1 fw-bold text-primary">
                 <div>ĐẠI HỘI ĐẠI BIỂU ĐOÀN TNCS HỒ CHÍ MINH XÃ ĐA TỐN</div>
                 <div>LẦN THỨ XXV NHIỆM KỲ 2022 – 2027</div>
             </div>
