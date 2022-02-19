@@ -13,12 +13,12 @@
             <form action="{{ route('guests.index') }}" method="GET">
                 <div class="p-3 py-4">
                     <div class="mb-4">
-                        <h3 class="text-center">Tìm kiếm nhóm, đại biểu</h3>
+                        <h3 class="text-center">Tìm kiếm Đại biểu</h3>
                     </div>
                     <div class="row mb-4">
                         <div class="col-12 mb-4">
-                            <label for="searchInput" class="form-label">Từ khóa</label>
-                            <input type="text" placeholder="Nhập id group, id guest hoặc fullname" class="form-control" id="searchInput" value="{{ $search }}" name="search">
+                            <label for="searchInput" class="form-label">Mã Đại biểu</label>
+                            <input type="text" placeholder="Nhập mã đại biểu" class="form-control" id="searchInput" value="{{ $search }}" name="search">
                         </div>
                         <div class="col-12 mb-4">
                             <select id="groupSelect" name="search_group[]">
@@ -43,7 +43,7 @@
             </form>
         </div>
         <div class="my-3 w-100 mb-4">
-            <h4 class="d-flex justify-content-center">Danh sách đại biểu</h4>
+            <h4 class="d-flex justify-content-center">DANH SÁCH ĐẠI BIỂU</h4>
         </div>
         <div id="tableGroupList">
 
@@ -74,8 +74,8 @@
                     <table class="table  table-hover">
                         <thead>
                             <tr>
-                                <th scope="col"></th>
-                                <th style="width: 15%" scope="col">ID đại biểu</th>
+                                <th style="width: 20px" scope="col"></th>
+                                <th style="width: 15%" scope="col">Mã số đại biểu</th>
                                 <th style="width: 30%" scope="col">Tên đại biểu</th>
                                 <th style="width: 20%" scope="col">Trạng thái</th>
                                 <th scope="col"></th>
@@ -84,17 +84,17 @@
                         <tbody>
                         </tbody>
                     </table>
-                    <h5 class="mb-2">Tổng 0 đại biểu</h5>
+                    <h5 class="mb-2" style="padding-left:34px">Tổng 0 đại biểu</h5>
                 </div>
             `);
         }
         groups[guest.group.id].count++;
         $(`#tableGroupList [group-id="${guest.group.id}"] table tbody`).append(`
                 <tr>
-                    <th scope="row">${groups[guest.group.id].count}</th>
-                    <td><a href="/${prefix}/guest?guest_id=${guest.guest_id}" target="_blank">${guest.guest_id}</a></td>
-                    <td><a href="/${prefix}/guest?guest_id=${guest.guest_id}" target="_blank">${guest.fullname}</a></td>
-                    <td>
+                    <th style="vertical-align: middle;"  scope="row">${groups[guest.group.id].count}</th>
+                    <td style="vertical-align: middle;"> <a href="/${prefix}/guest?guest_id=${guest.guest_id}" target="_blank">${guest.guest_id}</a></td>
+                    <td style="vertical-align: middle;"> <a href="/${prefix}/guest?guest_id=${guest.guest_id}" target="_blank">${guest.fullname}</a></td>
+                    <td style="vertical-align: middle;">
                         ${!guest.checking_status ? '<span style="color:red">CHƯA ĐIỂM DANH</span>' : '<span style="color:green">ĐÃ ĐIỂM DANH</span>'}
                     </td>
                     <td class='d-flex justify-content-end'>
@@ -131,6 +131,5 @@
         $(`#tableGroupList [group-id="${guest.group.id}"] h5`).text(`Tổng ${groups[guest.group.id].count} đại biểu`);
     });
     $("#totaleGuest").text(`Tổng số ${guests.data.length} đại biểu`)
-
 </script>
 @endsection

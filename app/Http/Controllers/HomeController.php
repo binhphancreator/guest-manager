@@ -43,4 +43,9 @@ class HomeController extends Controller
         // return $user;
         return redirect()->route('profile.index')->with('success', "Cập nhật thành công");
     }
+
+    public function getDocs()
+    {
+        return view('page.docs');
+    }
 }

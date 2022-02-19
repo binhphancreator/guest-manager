@@ -5,18 +5,19 @@
 <style>
   .guest__detail {
     position: relative;
+    /* background-image: url("/img/trong-dong.png"); */
     width: 100vw;
     height: 100vh;
     background-color: #151AA6;
     display: flex;
     flex-direction: column;
-    z-index: -2;
+    /* z-index: -2; */
   }
 
   .bg__img {
     background-image: url("/img/trong-dong.png");
     opacity: 0.25;
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     left: 0;
@@ -24,7 +25,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    z-index: -1;
+    /* z-index: -1; */
   }
 
   .gd__top {
@@ -118,7 +119,9 @@
   }
 
   .img__body>img {
-    width: 14vw;
+    width: 20vw;
+    height: 40vh;
+    object-fit: contain;
   }
 
   .guest__info {
@@ -159,7 +162,7 @@
     }
 
     .img__top>img {
-      width: 8vh;
+      width: 10vh;
       object-fit: contain;
       height: auto;
       margin: 8px 0;
@@ -191,7 +194,7 @@
 
     .img__body>img {
       height: 28vh;
-      width: 50vw;
+      width: 90vw;
       object-fit: contain;
       margin: 0px 0 30px;
     }
@@ -233,11 +236,11 @@
       </div>
       <div class="guest__info col-12 col-md-8">
         <div class="row">
-          <div class="col-12">Đồng chí <span class="text-uppercase ms-3 ">{{$guest->fullname}}</span></div>
+          <div class="col-12">Đồng chí <span class="text-uppercase fw-bold">{{$guest->fullname}}</span></div>
 
         </div>
         <div class="row">
-          <div class="col-12">Đơn vị <span class="ms-3">{{$guest->group->group_name}}</span></div>
+          <div class="col-12">Đơn vị: <span>{{$guest->group->group_name}}</span></div>
 
         </div>
         <div class="row">
@@ -249,19 +252,79 @@
         </div>
         <div class="row">
           <div class="col-12 col-md-6">
-            Chỗ ngồi phiên 1: {{$guest->seat1}}
+            Chỗ ngồi phiên 1: <span>@if($guest->seat1)
+              {{$guest->seat1}}
+              @else
+              {{"-"}}
+              @endif</span>
           </div>
           <div class="col-12 col-md-6">
-            Chỗ ngồi phiên 2: {{$guest->seat2}}
+            Chỗ ngồi phiên 2: <span>@if($guest->seat2)
+              {{$guest->seat2}}
+              @else
+              {{"-"}}
+              @endif</span>
           </div>
         </div>
         <div class="row">
-          <div class="col-12">Trang thái
+          <div class="col-12">Trạng thái
             @if($guest->checking_status == 1)
             <span style="color:greenyellow; text-shadow: 1px 1px 2px #0f0;">ĐÃ ĐIỂM DANH</span>
             @else
             <span style="color:red; text-shadow: 1px 1px 2px #f00;">CHƯA ĐIỂM DANH</span>
             @endif
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-12">
+            <a style="color:white" href="{{route('docs.index')}}"> <svg fill="white" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="padding-bottom:3px" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 61.994 61.994" style="enable-background:new 0 0 61.994 61.994;" xml:space="preserve">
+                <g>
+                  <g>
+              ,9.998-4.484,9.998-10V24.073L54.988,23.789z M48.994,51.993c0,2.203-1.793,3.997-3.997,3.997H17
+			c-2.205,0-3.999-1.794-3.999-3.997V9.999C13.001,7.794,14.794,6,17,6h10.921v11.072c0,5.514,4.486,10.001,10,10.001h11.072V51.993
+			z" />
+                    <path d="M54.988,23.789l-0.031-0.113c-0.025-0.193-0.07-0.38-0.135-0.572l-0.064-0.192l-0.046-0.099
+			c-0.103-0.222-0.222-0.418-0.358-0.597l-0.033-0.068L33.05,0.884c-0.248-0.248-0.537-0.446-0.9-0.613l-0.253-0.094
+			c-0.187-0.064-0.378-0.109-0.581-0.137L31.169,0H17C11.486,0,7,4.485,7,10v41.994c0,5.514,4.486,10,10.001,10h27.996
+			c5.515,0      <path d="M14.675,34.112c0,1.291,1.046,2.337,2.337,2.337h26.487c1.291,0,2.337-1.047,2.337-2.337s-1.046-2.337-2.337-2.337H17.012
+			C15.721,31.775,14.675,32.822,14.675,34.112z" />
+                    <path d="M43.499,38.008H17.012c-1.291,0-2.337,1.047-2.337,2.336c0,1.291,1.046,2.338,2.337,2.338h26.487
+			c1.291,0,2.337-1.047,2.337-2.338C45.836,39.055,44.79,38.008,43.499,38.008z" />
+                    <path d="M43.499,44.24H17.012c-1.291,0-2.337,1.046-2.337,2.337s1.046,2.337,2.337,2.337h26.487c1.291,0,2.337-1.047,2.337-2.337
+			S44.79,44.24,43.499,44.24z" />
+                  </g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+              </svg><span>Tài liệu Đại hội</span></a>
           </div>
         </div>
       </div>

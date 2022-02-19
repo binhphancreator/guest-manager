@@ -29,6 +29,7 @@ Route::resource('groups', GroupController::class)->middleware('auth');
 Route::resource('guests', GuestController::class)->middleware('auth');
 
 Route::get('/guest', [GuestController::class, 'detail'])->name('guests.detail');
+Route::get('/docs', [HomeController::class, 'getDocs'])->name('docs.index');
 
 Route::get('/checkin', [GuestController::class, 'checkin'])->name('guests.checkin');
 Route::get('/checkout', [GuestController::class, 'checkout'])->name('guests.checkout');
