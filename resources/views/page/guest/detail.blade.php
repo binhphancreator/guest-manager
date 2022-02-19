@@ -15,6 +15,7 @@
     /* background-color: #151AA6; */
     display: flex;
     flex-direction: column;
+    overflow: auto;
   }
 
 
@@ -248,11 +249,11 @@
           <div class="col-12">Đơn vị: <span>{{$guest->group->group_name}}</span></div>
 
         </div>
-        <div class="row">
-          <div class="col-3">Chức vụ</div>
-          <div class="col-9">
-            <div class="row">{{$guest->title1}}</div>
-            <div class="row">{{$guest->title2}}</div>
+        <div class="d-flex flex-wrap">
+          <p class="">Chức vụ:&nbsp;</p>
+          <div>
+            <p class="mb-0">{{$guest->title1}}</p>
+            <p class="mb-0">{{$guest->title2}}</p>
           </div>
         </div>
         <div class="row">
@@ -272,15 +273,15 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-12">Trạng thái
+          <div class="col-12">Trạng thái:
             @if($guest->checking_status == 1)
-            <span style="color:greenyellow; text-shadow: 1px 1px 2px #0f0;">ĐÃ ĐIỂM DANH</span>
+            <span style="color:greenyellow">ĐÃ ĐIỂM DANH</span>
             @else
-            <span style="color:red; text-shadow: 1px 1px 2px #f00;">CHƯA ĐIỂM DANH</span>
+            <span style="color:red;">CHƯA ĐIỂM DANH</span>
             @endif
           </div>
         </div>
-        <div class="row mt-4">
+        <div class="row mt-2">
           <div class="col-12">
             <a style="color:white" href="{{route('docs.index')}}">
               <svg style="width: 24px; height: 24px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-font-fill" viewBox="0 0 16 16">
