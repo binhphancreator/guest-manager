@@ -78,28 +78,28 @@
       </div>
 
       <div class="col-3 mb-3">
-        <label class="form-label">Phiên 1</label>
+        <label class="form-label">Vị trí ghế Phiên 1</label>
         <input name="seat1" type="text" class="form-control" value="{{old('seat1')}}">
         @if ($errors->first('seat1'))
         <div><small class="text-danger">{{ $errors->first('seat1') }}</small></div>
         @endif
       </div>
       <div class="col-3 mb-3">
-        <label class="form-label">Phiên 2</label>
+        <label class="form-label">Vị trí ghế Phiên 2</label>
         <input name="seat2" type="text" class="form-control" value="{{old('seat2')}}">
         @if ($errors->first('seat2'))
         <div><small class="text-danger">{{ $errors->first('seat2') }}</small></div>
         @endif
       </div>
       <div class="col-3 mb-3">
-        <label class="form-label">Phiên 3</label>
+        <label class="form-label">Vị trí ghế Phiên 3</label>
         <input name="seat3" type="text" class="form-control" value="{{old('seat3')}}">
         @if ($errors->first('seat3'))
         <div><small class="text-danger">{{ $errors->first('seat3') }}</small></div>
         @endif
       </div>
       <div class="col-3 mb-3">
-        <label class="form-label">Phiên 4</label>
+        <label class="form-label">Vị trí ghế Phiên 4</label>
         <input name="seat4" type="text" class="form-control" value="{{old('seat4')}}">
         @if ($errors->first('seat4'))
         <div><small class="text-danger">{{ $errors->first('seat4') }}</small></div>
