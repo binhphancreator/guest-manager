@@ -4,7 +4,7 @@
 @include('component.header')
 <section class="main-content container-lg mb-5">
   <div class="mb-3">
-    <a href="/guests">Danh sách đại biểu</a>
+    <a href="{{route('guests.index')}}">Danh sách đại biểu</a>
   </div>
   <div class="p-4 border-top shadow-sm rounded-3">
     <div class="my-3 w-100">
