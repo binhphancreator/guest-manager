@@ -4,7 +4,7 @@
 @include('component.header')
 <section class="main-content container-lg mb-5">
     <div class="mb-3">
-        <a href="/guests/create">
+        <a href="{{route('guests.create')}}">
             Thêm đại biểu
         </a>
     </div>
