@@ -102,6 +102,6 @@ class GroupController extends Controller
             $group->delete();
             return redirect()->route('groups.index')->with('success', "Xoá thành công");
         }
-        return redirect()->route('groups.index')->with('error', "Xoá không thành công, nhóm vẫn còn đại biểu");
+        return redirect()->route('groups.index')->with('error', "Xoá không thành công, đơn vị vẫn còn đại biểu");
     }
 }
