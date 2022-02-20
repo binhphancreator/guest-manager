@@ -186,19 +186,19 @@ class GuestController extends Controller
         if (null === $token) return response('error', 404);
 
         if ($action === 'checkin' && $guest_id !== null) {
-            if ($this->user->where('token', $token)->doesntExist()) return response('error', 404);
+            if ($this->user->where('token', $token)->doesntExist()) return response('token incorrect', 404);
 
             $guest = $this->guest->where('guest_id', $guest_id)->update(['checking_status' => true]);
-            if (!$guest) return response('error', 404);
+            if (!$guest) return response('not has guest', 404);
 
             return response('success', 200);
         }
 
         if ($action === 'checkout' && $guest_id !== null) {
-            if ($this->user->where('token', $token)->doesntExist()) return response('error', 404);
+            if ($this->user->where('token', $token)->doesntExist()) return response('token incorrect', 404);
 
             $guest = $this->guest->where('guest_id', $guest_id)->update(['checking_status' => false]);
-            if (!$guest) return response('error', 404);
+            if (!$guest) return response('not has guest', 404);
 
             return response('success', 200);
         }
@@ -207,11 +207,12 @@ class GuestController extends Controller
             if ($this->user->where([
                 ['token', '=', $token],
                 ['role_id', '=', 1]
-            ])->doesntExist()) return response('error', 404);
+            ])->doesntExist()) return response('token incorrect', 404);
 
-            $guest = $this->guest->where('group_id', $group_id)->update(['checking_status' => true]);
-            // return $guest;
-            if (!$guest) return response('error', 404);
+            $guest = $this->guest->whereHas('group', function (Builder $builder) use ($group_id) {
+                $builder->where('group_id', $group_id);
+            })->update(['checking_status' => true]);
+            if (!$guest) return response('not has guest', 404);
 
             return response('success', 200);
         }

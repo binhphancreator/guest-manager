@@ -250,6 +250,7 @@ table * {
 .MultiCheckBoxDetail .cont {
     clear: both;
     overflow: hidden;
+    display: flex;
     padding: 3px;
 }
 
