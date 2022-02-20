@@ -111,7 +111,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Bạn chắc chắn muốn xóa nhóm:  ${guest.fullname}
+                                    Bạn chắc chắn muốn xóa đại biểu:  ${guest.fullname}
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

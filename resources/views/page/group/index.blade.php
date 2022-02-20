@@ -41,10 +41,10 @@
             <a href="{{route('groups.edit',$group->id)}}" class="btn btn-primary">Sửa</a>
 
             @if(auth()->user()->role_id === 1)
-            <button type="button" class="btn btn-danger  ms-3" data-bs-toggle="modal" data-bs-target="#model{{$group->id}}">
+            <button type="button" class="btn btn-danger  ms-3" data-bs-toggle="modal" data-bs-target="#model{{$group->group_id}}">
               Xóa
             </button>
-            <div class="modal fade" id="model{{$group->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+            <div class="modal fade" id="model{{$group->group_id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -52,7 +52,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    Bạn chắc chắn muốn xóa đơn vị: {{$group->name}}
+                    Bạn chắc chắn muốn xóa đơn vị: {{$group->group_name}}
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
