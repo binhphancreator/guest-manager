@@ -68,7 +68,7 @@ class GuestController extends Controller
 
         if ($isNotCheckin) $guests = $guests->where('checking_status', false);
         if ($isActive) $guests = $guests->where('is_active', true);
-        $guests = $guests->with('group')->paginate(10);
+        $guests = $guests->with('group')->get();
 
         $groups = Group::all();
 

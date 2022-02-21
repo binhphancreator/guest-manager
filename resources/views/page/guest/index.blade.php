@@ -58,10 +58,6 @@
         </div>
 
         <h4 class="pt-4 border-top" id="totaleGuest"></h4>
-
-        <div class='d-flex justify-content-end'>
-            {{ $guests->links('pagination::bootstrap-4') }}
-        </div>
     </div>
 </section>
 @endsection
@@ -71,7 +67,7 @@
     const groups = {};
     const prefix = "{{config('app.prefix_web')}}";
     var guests = <?php echo json_encode($guests); ?>;
-    guests.data.forEach(guest => {
+    guests.forEach(guest => {
         if (!(guest.group && guest.group.id)) return
         if (!groups[guest.group.id]) {
             groups[guest.group.id] = guest.group;
@@ -138,6 +134,6 @@
             `);
         $(`#tableGroupList [group-id="${guest.group.id}"] h5`).text(`Tổng ${groups[guest.group.id].count} đại biểu`);
     });
-    $("#totaleGuest").text(`Tổng số ${guests.data.length} đại biểu`)
+    $("#totaleGuest").text(`Tổng số ${guests.length} đại biểu`)
 </script>
 @endsection
