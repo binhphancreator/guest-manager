@@ -48,6 +48,7 @@ class GuestController extends Controller
         $search_group = $request->input('search_group');
         $search = $request->input('search') ?? '';
         $isNotCheckin = $request->input('checkin') ? true : false;
+        $isActive = $request->input('is_active') ? true : false;
 
         if ($search_group) $guests = Guest::whereHas('group', function (Builder $builder) use ($search_group) {
             $builder->whereIn('id', $search_group);
@@ -66,11 +67,18 @@ class GuestController extends Controller
 
 
         if ($isNotCheckin) $guests = $guests->where('checking_status', false);
+        if ($isActive) $guests = $guests->where('is_active', true);
         $guests = $guests->with('group')->paginate(10);
 
         $groups = Group::all();
 
-        return view('page.guest.index', ['guests' => $guests, 'groups' => $groups, 'search_group' => $search_group, 'checkin' => $isNotCheckin, 'search' => $search]);
+        return view('page.guest.index', [
+            'guests' => $guests,
+            'groups' => $groups,
+            'search_group' => $search_group,
+            'checkin' => $isNotCheckin,
+            'search' => $search, "is_active" => $isActive
+        ]);
     }
 
     /**

@@ -19,8 +19,8 @@ class Guest extends Model
 
     protected static function booted()
     {
-        static::addGlobalScope('active', function (Builder $builder) {
-            $builder->where('is_active', true);
-        });
+        // static::addGlobalScope('active', function (Builder $builder) {
+        //     $builder->where('is_active', true);
+        // });
     }
 }

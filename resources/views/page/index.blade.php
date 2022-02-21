@@ -20,11 +20,19 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-12">
+                <div class="col-12 col-md-6 mb-3">
                     <div class="form-check col-auto">
                         <input class="form-check-input" type="checkbox" name="checkin" id="checkinStatus">
                         <label class="form-check-label" for="checkinStatus">
                             Chưa checkin
+                        </label>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-check col-auto">
+                        <input class="form-check-input" type="checkbox" name="is_active" id="isActive">
+                        <label class="form-check-label" for="isActive">
+                            Đang hoạt động
                         </label>
                     </div>
                 </div>
