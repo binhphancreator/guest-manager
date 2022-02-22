@@ -181,6 +181,23 @@ header.header-home {
     }
 }
 
+.d-flex-count {
+    display: flex;
+}
+.dash-count {
+    padding: 0 5px;
+}
+
+@media only screen and (max-width: 600px) {
+    .d-flex-count {
+        flex-direction: column;
+    }
+
+    .dash-count {
+        display: none;
+    }
+}
+
 .navbar-brand {
     font-weight: 500;
     color: #424949;

@@ -57,7 +57,7 @@
 
         </div>
 
-        <h4 class="pt-4 border-top" id="totaleGuest"></h4>
+        <h4 class="pt-4 border-top  d-flex-count" id="totaleGuest"></h4>
     </div>
 </section>
 @endsection
@@ -67,11 +67,18 @@
     const groups = {};
     const prefix = "{{config('app.prefix_web')}}";
     var guests = <?php echo json_encode($guests); ?>;
+    let checkinCount = 0
+    let checkoutCount = 0
     guests.forEach(guest => {
         if (!(guest.group && guest.group.id)) return
         if (!groups[guest.group.id]) {
-            groups[guest.group.id] = guest.group;
-            groups[guest.group.id].count = 0;
+            groups[guest.group.id] = {
+                ...guest.group,
+                count: 0,
+                checkinCount: 0,
+                checkoutCount: 0
+            };
+
             $('#tableGroupList').append(`
                 <div group-id=${guest.group.id} class="mb-4 overflow-auto">
                     <h4 class="mb-2">${guest.group.group_name}</h4>
@@ -88,11 +95,19 @@
                         <tbody>
                         </tbody>
                     </table>
-                    <h5 class="mb-2" style="padding-left:34px">Tổng 0 đại biểu</h5>
+                    <div class="mb-2 d-flex-count" style="padding-left:34px; font-size:1.25rem;">Tổng: 0 đại biểu</div>
                 </div>
             `);
         }
         groups[guest.group.id].count++;
+        if (guest.checking_status) {
+            groups[guest.group.id].checkinCount++
+            checkinCount++
+        }
+        if (!guest.checking_status) {
+            groups[guest.group.id].checkoutCount++
+            checkoutCount++
+        }
         $(`#tableGroupList [group-id="${guest.group.id}"] table tbody`).append(`
                 <tr>
                     <th style="vertical-align: middle;"  scope="row">${groups[guest.group.id].count}</th>
@@ -132,8 +147,15 @@
                     </td>
                 </tr>
             `);
-        $(`#tableGroupList [group-id="${guest.group.id}"] h5`).text(`Tổng ${groups[guest.group.id].count} đại biểu`);
+        $(`#tableGroupList [group-id="${guest.group.id}"] div`).
+        html(`<div>Tổng: ${groups[guest.group.id].count} đại biểu<span class="dash-count">- </span> </div> 
+        <div style="color:green">Đã điểm danh: ${groups[guest.group.id].checkinCount} đại biểu<span class="dash-count">- </span> </div>
+        <div style="color:red">Chưa điểm danh: ${groups[guest.group.id].checkoutCount} đại biểu</div>
+        `);
     });
-    $("#totaleGuest").text(`Tổng số ${guests.length} đại biểu`)
+    $("#totaleGuest").text(`Tổng số ${guests.length} đại biểu`).html(`<div>Tổng số: ${guests.length} đại biểu<span class="dash-count">- </span> </div> 
+        <div style="color:green">Đã điểm danh: ${checkinCount} đại biểu<span class="dash-count">- </span> </div>
+        <div style="color:red">Chưa điểm danh: ${checkoutCount} đại biểu</div>
+        `);
 </script>
 @endsection
