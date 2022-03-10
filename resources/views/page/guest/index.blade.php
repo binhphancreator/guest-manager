@@ -147,7 +147,7 @@
                     </td>
                 </tr>
             `);
-        $(`#tableGroupList [group-id="${guest.group.id}"] div`).
+        $(`#tableGroupList [group-id="${guest.group.id}"] > div`).
         html(`<div>Tổng: ${groups[guest.group.id].count} đại biểu<span class="dash-count">- </span> </div> 
         <div style="color:green">Đã điểm danh: ${groups[guest.group.id].checkinCount} đại biểu<span class="dash-count">- </span> </div>
         <div style="color:red">Chưa điểm danh: ${groups[guest.group.id].checkoutCount} đại biểu</div>
