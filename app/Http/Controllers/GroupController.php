@@ -48,7 +48,7 @@ class GroupController extends Controller
             'group_name' => $request->group_name
         ]);
 
-        return redirect()->route('groups.create')->with('success', 'Thêm nhóm thành công!');
+        return redirect()->route('groups.create')->with('success', 'Thêm đơn vị thành công!');
     }
 
     /**
