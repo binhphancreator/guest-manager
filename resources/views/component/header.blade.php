@@ -6,8 +6,8 @@
                 <img src="/img/logo.png" alt="" srcset="">
             </a>
             <div class="flex-grow-1 fw-bold text-primary">
-                <div>ĐẠI HỘI ĐẠI BIỂU ĐOÀN TNCS HỒ CHÍ MINH XÃ ĐA TỐN</div>
-                <div>LẦN THỨ XXV NHIỆM KỲ 2022 – 2027</div>
+                <div>ĐẠI HỘI ĐẠI BIỂU ĐOÀN TNCS HỒ CHÍ MINH XÃ KIM SƠN</div>
+                <div>LẦN THỨ XXIV NHIỆM KỲ 2022 – 2027</div>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

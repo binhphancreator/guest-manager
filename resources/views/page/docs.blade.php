@@ -232,8 +232,8 @@
                 <img src="/img/logo.png" alt="">
             </div>
             <div class="title__top">
-                <div>ĐẠI HỘI ĐẠI BIỂU ĐOÀN TNCS HỒ CHÍ MINH XÃ ĐA TỐN </div>
-                <div>LẦN THỨ XXV, NHIỆM KỲ 2022-2027</div>
+                <div>ĐẠI HỘI ĐẠI BIỂU ĐOÀN TNCS HỒ CHÍ MINH XÃ KIM SƠN </div>
+                <div>LẦN THỨ XXIV, NHIỆM KỲ 2022-2027</div>
             </div>
         </div>
         <div class="line__1"></div>
